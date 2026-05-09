@@ -15,21 +15,34 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/home">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="/profile/nama_anda">Profile</a>
-                </li>
-            </ul>
+            @if(Auth::check())
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('profile')}}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Data Mahasiswa</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <form action="{{route('auth.logout')}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm mt-1"> Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            @endif
             </div>
         </div>
     </nav>
     @yield('content')
-    <div class="container mt-4">
+    <div class="container fixed-bottom">
         <div class="text-center">
-                <p>ini footer</p>
+                <p>ini footer @copyright 2026</p>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

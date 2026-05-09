@@ -2,8 +2,13 @@
 @section('title', 'Home')
 @section('content')
     <div class="container mt-4">
-        <h1>Ini Halaman Home</h1>
-        <p>Nama : {{$data['name']}}</p>
-        <p>Email : {{$data['email']}}</p>
+        <div class="card">
+            <div class="card-body">
+                <h3>Halo Selamat Datang , user {{Auth::user()->nama}}</h3>
+                <p>
+                    ini adalah halaman login
+                </p>
+            </div>
+        </div>
     </div>
 @endsection
