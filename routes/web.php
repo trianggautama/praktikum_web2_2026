@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function () {
@@ -15,4 +16,14 @@ Route::controller(AuthController::class)->name('auth.')->group(function () {
     Route::get('/register', 'registerView')->name('registerView');
     Route::post('/register', 'registerStore')->name('registerStore');
     Route::post('/logout', 'logout')->name('logout');
+});
+
+Route::controller(MahasiswaController::class)->prefix('mahasiswa')->name('mahasiswa.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/create', 'store')->name('store');
+    Route::get('/show/{mahasiswa}', 'show')->name('show');
+    Route::get('/{mahasiswa}/edit', 'edit')->name('edit');
+    Route::put('/{mahasiswa}/edit', 'update')->name('update');
+    Route::delete('/delete/{mahasiswa}', 'destroy')->name('delete');
 });
